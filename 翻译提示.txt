@@ -1,0 +1,16 @@
+JJ--??
+======
+
+gotcha 经常出错的问题，经常弄错的地方，陷阱，缺陷，疑难杂症，易犯错误，容易犯的错误
+
+coerce 强制，强制转换，强制类型转换，要挟，强迫
+
+grammar 语法，文法
+
+syntax 句法
+
+Grammar is a set of rules that set forth the correct standard of usage in a language. These rules dictate how we should say things correctly. For example, agreement between words in relation to other constructions in the sentence.
+
+Syntax is the study of sentences and their structure, and the constructions within sentences. Syntax tells us what goes where in a sentence.
+
+Shims/Polyfills
