@@ -1,0 +1,79 @@
+7
+
+```
+    // 这样做会产生错误
+    if (DEBUG) {
+        console.log( "Debugging is starting" );
+    }
+    // 这样做则是安全的，不会产生错误
+    if (typeof DEBUG !== "undefined") {
+        console.log( "Debugging is starting" );
+    }
+
+```
+
+6
+
+```
+    var a;
+
+    typeof a; // "undefined"
+
+    typeof b; // "undefined"
+```
+
+5
+
+在JavaScript中变量是没有类型的，只有值才有。变量随时可以持有任意类型的值。
+
+```
+    var a = 42;
+    typeof a; // "number"
+
+    a = true;
+    typeof a; // "boolean"
+```
+
+4
+
+那么数组的情况又如何呢？JavaScript本身支持数组，那它是不是也是一个特殊类型？
+
+```
+    typeof [1,2,3] === "object"; // true
+```
+
+非也，数组也是`object`类型。确切地说是`object`的一个子类型（见`第三章`），其中一个特征是数组中的元素按照数字顺序进行索引（而非普通对象那样是字符串键值），并且`length`属性会根据元素数量自动更新。
+
+3
+
+那么`typeof`的第七个返回值字符串值是什么呢？
+
+```
+    typeof function a(){ /* .. */ } === "function"; // true
+```
+
+上面`typeof`的返回值容易让我们得出这样一个结论，就是`函数`（function）也是JavaScript的一个内置类型。然而如果你查阅规范就会知道，它实际上是`object`的一个“子类型”（subtype）。具体来说，函数被称为“可调用对象”（callable object），即该对象内部有一个｀\[\[Call\]\]｀属性使得它能够被执行。
+
+2
+
+typeof null === "object"; // true
+
+你需要使用复合条件来检测`null`值的类型，：
+
+```
+    var a = null;
+
+    (!a && typeof a === "object"); // true
+```
+
+1
+
+JavaScript有七种内置类型：
+
+- null
+- undefined
+- boolean
+- number
+- string
+- object
+- symbol（ES6中新加入）
