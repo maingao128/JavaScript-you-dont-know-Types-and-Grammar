@@ -1,3 +1,50 @@
+11 ***
+
+此外，很多`数组`函数在处理`字符串`时非常有用，`字符串`中没有这些函数，但我们可以“借用”`数组`的这些非变更方法（nonmutation）来处理`字符串`：
+
+```
+    a.join;         // undefined
+    a.map;          // undefined
+
+    var c = Array.prototype.join.call( a, "-" );
+    var d = Array.prototype.map.call( a, function(v){
+        return v.toUpperCase() + ".";
+    } ).join( "" );
+    
+    c;              // "f-o-o"
+    d;              // "F.O.O."
+```
+
+我们再来看看另外一个例子：`字符串`反转（经常在JavaScript面试中遇到的问题！）。`数组`有一个可变更成员函数`reverse()`，而`字符串`没有：
+
+```
+    a.reverse;      // undefined
+
+    b.reverse();    // ["!","o","O","f"]
+    b;              // ["f","O","o","!"]
+```
+
+遗憾的是，此类“借用”对于`数组`的可变更成员函数不适用，因为`字符串`是不可变的，其内容无法更改：
+
+```
+    Array.prototype.reverse.call( a );
+    // 返回值仍然是"foo"的一个字符串封装对象（见第三章）:(
+```
+
+一个变通（破解）的办法是将`字符串`转换为`数组`，执行需要的操作，然后再转换回`字符串`：
+
+```
+    var c = a
+        // split `a` into an array of characters
+        .split( "" )
+        // reverse the array of characters
+        .reverse()
+        // join the array of characters back to a string
+        .join( "" );
+    
+    c; // "oof"
+```
+
 10 **
 
 `字符串`不可变的意思是`字符串`的成员函数都不会改动`字符串`的原始值，而是创建并返回一个新的`字符串`。而`数组`的成员函数都是在其原始值上进行操作。
