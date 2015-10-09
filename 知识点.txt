@@ -1,3 +1,17 @@
+15 **
+
+在`非严格`和`严格`模式下，你可以声明一个名为`undefined`的局部变量。再次强调我们不建议这样做。
+
+```
+   function foo() {
+        "use strict";
+        var undefined = 2;
+        console.log( undefined ); // 2
+    }
+
+    foo();
+```
+
 14 ***
 
     if (!Number.EPSILON) {
