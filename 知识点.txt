@@ -1,3 +1,23 @@
+22 ****
+
+封装对象扮演的角色十分重要。因为基本类型值没有属性和方法，我们需要通过封装对象来访问`.length`和`.toString()`，此时JS会自动为基本类型值*包装*（box或者wrap）一个封装对象：
+
+```
+    var a = "abc";
+    
+    a.length; // 3
+    a.toUpperCase(); // "ABC"
+```
+
+21 ***
+
+```
+    Object.prototype.toString.call( [1,2,3] );
+    // "[object Array]"
+
+    Object.prototype.toString.call( /regex-literal/i );
+    // "[object RegExp]"
+```
 
 20 ****
 
