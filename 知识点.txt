@@ -1,3 +1,46 @@
+28 ***
+
+我们必须遵循一个基本原则：任何情况下都不要创建和使用空单元数组。
+
+27 ****
+
+http://www.w3schools.com/js/js_function_invocation.asp
+
+Invoking a Function with a Function Method
+In JavaScript, functions are objects. JavaScript functions have properties and methods.
+
+call() and apply() are predefined JavaScript function methods. Both methods can be used to invoke a function, and both methods must have the owner object as first parameter.
+
+Example
+function myFunction(a, b) {
+    return a * b;
+}
+myObject = myFunction.call(myObject, 10, 2);     // Will return 20
+
+Example
+function myFunction(a, b) {
+    return a * b;
+}
+myArray = [10, 2];
+myObject = myFunction.apply(myObject, myArray);  // Will also return 20
+
+26 ***
+
+http://www.w3schools.com/js/js_function_invocation.asp
+
+The Global Object
+When a function is called without an owner object, the value of this becomes the global object.
+
+In a web browser the global object is the browser window.
+
+This example returns the window object as the value of this:
+
+Example
+function myFunction() {
+    return this;
+}
+myFunction();                // Will return the window object
+
 25 ***
 
     var a = new Array( 3 );
