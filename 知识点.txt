@@ -1,3 +1,17 @@
+25 ***
+
+    var a = new Array( 3 );
+    var b = [ undefined, undefined, undefined ];
+    var c = [];
+
+```
+    a.join( "-" ); // "--"
+    b.join( "-" ); // "--"
+
+    a.map(function(v,i){ return i; }); // [ undefined x 3 ]
+    b.map(function(v,i){ return i; }); // [ 0, 1, 2 ]
+```
+
 24 ***
 
 `数组`构造函数只带一个`数字`参数时，该参数会被当作数组的预设大小（length），而非数组中的一个元素。
