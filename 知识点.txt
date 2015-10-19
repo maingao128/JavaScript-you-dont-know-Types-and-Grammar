@@ -1,3 +1,42 @@
+30 ***
+
+###Prototypes作为默认值
+
+`Function.prototype`是一个空函数，`RegExp.prototype`是一个“空”正则表达式（例如：没有任何匹配），而`Array.prototype`是一个空数组，对于那些还没有被赋值的变量来说它们是不错的缺省值。
+
+例如：
+
+```
+    function isThisCool(vals,fn,rx) {
+        vals = vals || Array.prototype;
+        fn = fn || Function.prototype;
+        rx = rx || RegExp.prototype;
+        return rx.test(
+            vals.map( fn ).join( "" )
+        ); 
+    }
+
+    isThisCool();       // true
+    
+    isThisCool(
+        ["a","b","c"],
+        function(v){ return v.toUpperCase(); },
+        /D/
+    );                  // false
+```
+
+29 ***
+
+任何字符串值都可以通过prototype delegation（参考本系列的*《this & Object Prototypes》*）来访问这些方法：
+
+```
+    var a = " abc ";
+    
+    a.indexOf( "c" ); // 3
+    a.toUpperCase();  // " ABC "
+    a.trim();         // "abc"
+```
+
 28 ***
 
 我们必须遵循一个基本原则：任何情况下都不要创建和使用空单元数组。
