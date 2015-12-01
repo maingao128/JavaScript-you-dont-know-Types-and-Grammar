@@ -1,3 +1,18 @@
+44 *****
+
+```
+1. 如果Type(x)是数字，Type(y)是字符串，则返回x == ToNumber(y)的结果。
+2. 如果Type(x)是字符串，Type(y)是数字，则返回ToNumber(x) == y的结果。
+```
+
+```
+1. 如果Type(x)是`boolean`值，则返回ToNumber(x) == y的结果。
+2. 如果Type(y)是`boolean`值，则返回x == ToNumber(y)的结果。
+```
+
+"42" == true // false
+"42" == false // false
+
 43 *****
 
 “在相等比较中，`==`允许强制类型转换，而`===`不允许”。
