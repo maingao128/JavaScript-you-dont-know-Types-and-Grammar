@@ -1,3 +1,45 @@
+46 ****
+
+```
+    "0" == null;        // false
+    "0" == undefined;   // false
+    "0" == false;       // true -- 晕！
+    "0" == NaN;         // false
+    "0" == 0;           // true
+    "0" == "";          // false
+
+    false == null;      // false
+    false == undefined; // false
+    false == NaN;       // false
+    false == 0;         // true -- 晕！
+    false == "";        // true -- 晕！
+    false == [];        // true -- 晕！
+    false == {};        // false
+
+    "" == null;         // false
+    "" == undefined;    // false
+    "" == NaN;          // false
+    "" == 0;            // true -- 晕！
+    "" == [];           // true -- 晕！
+    "" == {};           // false
+
+    0 == null;          // false
+    0 == undefined;     // false
+    0 == NaN;           // false
+    0 == [];            // true -- 晕！
+    0 == {};            // false
+```
+
+45 ****
+
+```
+    Number.prototype.valueOf = function() {
+        return 3;
+    };
+
+    new Number( 2 ) == 3;   // true
+```
+
 44 *****
 
 == 和 ===
