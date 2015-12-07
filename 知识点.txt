@@ -21,6 +21,20 @@
 
 在`==`中`null`和`undefined`相等（同时它们也和自身相等），除它们之外其他值都不存在这种情况。
 
+null == false // false
++null == false // true
+
+Number(null) // 0
+Number(false) // +0
+
+```
+    var a = "abc";
+    var b = Object( a );    // same as `new String( a )`
+
+    a === b;                // false
+    a == b;                 // true
+```
+
 43 *****
 
 “在相等比较中，`==`允许强制类型转换，而`===`不允许”。
