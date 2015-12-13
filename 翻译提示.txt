@@ -1,6 +1,9 @@
 JJ--??
 ======
 
+github上的开源翻译 *****
+https://github.com/StarStudio/You-Dont-Know-JS
+
 gotcha 经常出错的问题，经常弄错的地方，陷阱，缺陷，疑难杂症，易犯错误，容易犯的错误
 
 coerce 强制，强制转换，强制类型转换，要挟，强迫
