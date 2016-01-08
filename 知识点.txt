@@ -1,3 +1,12 @@
+67 ***
+
+ES5规范的`严格（strict）`模式定义了更多的前期错误。比如在`严格`模式中，函数的参数不能重名：
+
+```
+    function foo(a,b,a) { }                 // just fine
+    function bar(a,b,a) { "use strict"; }   // Error!
+```
+
 66 ***
 
 ASI只在换行符（即line break）处起作用，不会在代码行的中间插入分号。
