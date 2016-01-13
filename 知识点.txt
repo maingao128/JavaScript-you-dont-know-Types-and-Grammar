@@ -1,3 +1,36 @@
+69 ****
+
+在ES6中，如果某个参数被省略或者值为`undefined`，则使用它的缺省值：
+
+```
+    function foo( a = 42, b = a + 1 ) {
+        console.log( a, b );
+    }
+
+    foo();              // 42 43
+    foo( undefined );   // 42 43
+    foo( 5 );           // 5 6
+    foo( void 0, 7 );   // 42 7
+    foo( null );        // null 1
+```
+......
+
+这里省略掉参数和传递`undefined`值的效果是一样的。然而它们之间的区别还是可以通过某些形式体现出来：
+
+```
+    function foo( a = 42, b = a + 1 ) {
+        console.log(
+            arguments.length, a, b,
+            arguments[0], arguments[1]
+        );
+    ￼}
+
+    foo();                  // 0 42 43 undefined undefined
+    foo( 10 );              // 1 10 11 10 undefined
+    foo( 10, undefined );   // 2 10 11 10 undefined
+    foo( 10, null );        // 2 10 null 10 null
+```
+
 68 ***
 
 ```
@@ -7,6 +40,18 @@
     let b;
 }
 ```
+
+......
+
+```
+    var b = 3;
+
+    function foo( a = 42, b = a + b + 5 ) {
+        // ..
+    }
+```
+
+`b = a + b + 5`试图在参数`b`的TDZ中访问`b`（并非函数外的那个`b`），因此会出错。然而访问`a`却没有问题，因为其刚好越过了参数`a`的TDZ。
 
 67 ***
 
