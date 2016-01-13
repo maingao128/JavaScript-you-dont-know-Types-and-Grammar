@@ -1,3 +1,13 @@
+68 ***
+
+```
+{
+    typeof a;   // undefined
+    typeof b;   // ReferenceError! (TDZ)
+    let b;
+}
+```
+
 67 ***
 
 ES5规范的`严格（strict）`模式定义了更多的前期错误。比如在`严格`模式中，函数的参数不能重名：
