@@ -1,3 +1,34 @@
+70 ***
+
+如果向函数传递参数，`arguments`数组中的对应单元会和命名参数建立关联（linkage）以获得相同的值。如果不传递参数就不会建立关联。
+
+但是在`严格`模式中并没有建立关联这一说：
+
+```
+    function foo(a) {
+        "use strict";
+        a = 42;
+        console.log( arguments[0] );
+    }
+
+    foo( 2 );   // 2 (not linked)
+    foo();      // undefined (not linked)
+```
+
+所以依赖这种关联并不好，实际上它来自于JavaScript语言引擎的底层实现，语言本身并没有这个特性。
+
+虽然并非一无是处，但`arguments`数组已经被废止（特别是ES6引入剩余参数`...`（rest parameters）之后，参见本系列的*《ES6 & Beyond》*）。
+
+在ES6之前，获得传递给函数的所有参数的唯一途径就是`arguments`数组，它非常有用。我们还可以将命名参数和`arguments`数组混用，只要遵守一个原则就不会有问题，即*永远不要同时访问命名参数和其对应的`arguments`数组单元*。这样就能确保不会出现关联泄露（leaky linkage）：
+
+```
+   function foo(a) {
+        console.log( a + arguments[1] ); // safe!
+    }
+
+    foo( 10, 32 );  // 42
+```
+
 69 ****
 
 在ES6中，如果某个参数被省略或者值为`undefined`，则使用它的缺省值：
