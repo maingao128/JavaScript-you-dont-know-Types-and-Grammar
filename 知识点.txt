@@ -1,3 +1,75 @@
+71 *****
+
+```
+    function foo() {
+            try {
+                return 42;
+            } 
+            finally {
+                console.log( "Hello" );
+            }
+
+            console.log( "never runs" );
+    }
+
+    console.log( foo() );
+    // Hello
+    // 42
+```
+
+......
+
+```
+    function foo() {
+        try {
+            throw 42; 
+        }
+        finally {
+            console.log( "Hello" );
+        }
+
+      console.log( "never runs" );
+    }
+
+    console.log( foo() );
+    // Hello
+    // Uncaught Exception: 42
+```
+
+......
+
+```
+    function foo() {
+        try {
+            return 42;
+        } 
+        finally {
+            throw "Oops!";
+        }
+
+        console.log( "never runs" );
+    }
+    
+    console.log( foo() );
+    // Uncaught Exception: Oops!
+```
+
+......
+
+`continue`和`break`也是如此：
+
+```
+    for (var i=0; i<10; i++) {
+        try {
+            continue; 
+        }
+        finally {
+            console.log( i );
+        }
+    }
+    // 0 1 2 3 4 5 6 7 8 9
+```
+
 70 ***
 
 如果向函数传递参数，`arguments`数组中的对应单元会和命名参数建立关联（linkage）以获得相同的值。如果不传递参数就不会建立关联。
