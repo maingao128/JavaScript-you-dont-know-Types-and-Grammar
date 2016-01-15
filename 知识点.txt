@@ -70,6 +70,49 @@
     // 0 1 2 3 4 5 6 7 8 9
 ```
 
+......
+
+`finally`中的`return`将会覆盖`try`和`catch`中的`return`的返回值：
+
+```
+    function foo() {
+        try {
+            return 42;
+        } 
+        finally {
+            // no `return ..` here, so no override
+        } 
+    }
+    
+    function bar() {
+        try {
+            return 42;
+        }
+        finally {
+            // override previous `return 42`
+            return; 
+        }
+    }
+
+    function baz() {
+        try {
+            return 42;
+        } 
+        finally {
+            // override previous `return 42`
+            return "Hello";
+        }
+    }
+
+    foo();  // 42
+    bar();  // undefined
+    baz();  // Hello
+```
+
+......
+
+通常来说，在函数中省略`return`与`return;`和`return undefined;`结果是一样的，但是在`finally`中省略`return`则会返回前面的`return`值。
+
 70 ***
 
 如果向函数传递参数，`arguments`数组中的对应单元会和命名参数建立关联（linkage）以获得相同的值。如果不传递参数就不会建立关联。
