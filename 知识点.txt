@@ -1,3 +1,66 @@
+72 ****
+
+首先`a`和`each`是通过`===`（见`第四章`）来进行相等比较。多数情况下`switch`中的`case`都是使用值，所以这样并没有问题。
+
+然而我们有时可能需要通过强制类型转换来进行相等比较（即`==`，见`第四章`），这时就要在`switch`中做一些特殊处理：
+
+```
+    var a = "42";
+
+    switch (true) {
+        case a == 10:
+            console.log( "10 or '10'" );
+            break;
+        case a == 42;
+            console.log( "42 or '42`" );
+            break;
+        default:
+            // never gets here
+    }
+    // 42 or '42'
+```
+
+除了简单值，`case`中还可以出现各种表达式，它会将表达式的结果值和`true`进行比较。因为`a == 42`的结果为`true`，所以条件成立。
+
+尽管可以使用`==`，但`switch`中`true`和`true`之间仍然是严格相等比较。如果`case`表达式的结果为真值，但不是严格意义上的`true`（见`第四章`），则条件不成立。所以如果在这里使用`||`和`&&`“逻辑运算符”就很容易掉坑里：
+
+```
+    var a = "hello world";
+    var b = 10;
+
+    switch (true) {
+        case (a || b == 10):
+            // never gets here
+            break;
+        default:
+            console.log( "Oops" );
+    }
+    // Oops
+```
+
+......
+
+```
+    var a = 10;
+
+    switch (a) {
+            case 1:
+            case 2:
+                    // never gets here
+            default:
+                    console.log( "default" );
+            case 3:
+                    console.log( "3" );
+                    break;
+            case 4:
+                    console.log( "4" );
+    }
+    // default
+    // 3
+```
+
+上例中的代码是这样执行的，首先遍历并找到所有匹配的`case`，如果没有匹配则执行`default`中的代码。因为其中没有`break`，所以继续执行已经遍历过的`case 3`代码块，直到`break`为止。
+
 71 *****
 
 ```
