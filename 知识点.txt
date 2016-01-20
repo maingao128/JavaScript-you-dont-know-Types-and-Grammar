@@ -1101,6 +1101,16 @@ myFunction();                // Will return the window object
 
 6
 
+
+```
+    var a;
+
+    a; // undefined
+    b; // ReferenceError: b is not defined
+```
+
+......
+
 ```
     var a;
 
@@ -1111,7 +1121,11 @@ myFunction();                // Will return the window object
 
 5
 
-在JavaScript中变量是没有类型的，只有值才有。变量随时可以持有任意类型的值。
+JavaScript中变量是没有类型的，只有值才有。变量随时可以持有任意类型的值。
+
+从另一个角度来理解就是JavaScript不“强制指定类型”，也就是说语言引擎不要求变量总是持有与其初始值相同类型的值。一个变量可以当前被赋予字符串类型的值，随后又被赋予数字类型的值。
+
+......
 
 ```
     var a = 42;
