@@ -1002,6 +1002,8 @@ myFunction();                // Will return the window object
 
 13 ***
 
+二进制浮点数最大的问题（不仅是JavaScript，所有遵循IEEE 754规范的语言都是如此），是会出现下面的情况：
+
 ```
     0.1 + 0.2 === 0.3; // false
 ```
@@ -1019,6 +1021,8 @@ myFunction();                // Will return the window object
     0.42.toFixed( 3 );  // "0.420"
     42..toFixed( 3 );   // "42.000"
 ```
+
+`42.toFixed(3)`是非法语法，因为`.`被视为常量`42.`的一部分（如前所述），因此没有`.`访问运算符来调用`toFixed`方法。
 
 11 ****
 
