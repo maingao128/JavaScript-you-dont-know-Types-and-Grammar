@@ -992,13 +992,33 @@ myFunction();                // Will return the window object
 
 14 ***
 
+常见的方法是设置一个误差范围值，我们通常称为“机器精度（machine epsilon）”，对于JavaScript中的`数字`来说这个值通常是`2^-52 (2.220446049250313e-16)`。
+
+从ES6开始，该误差范围值定义在`Number.EPSILON`中，我们可以直接拿来用，也可以为ES6之前的版本polyfill该值：
+
+```
     if (!Number.EPSILON) {
-        ...
+        Number.EPSILON = Math.pow(2,-52);
+    }
+```
+
+我们可以使用`Number.EPSILON`来比较两个`数字`是否（在指定的误差范围内）相等：
+
+```
+    function numbersCloseEnoughToEual(n1,n2) {
+        return Math.abs( n1 - n2 ) < Number.EPSILON;
     }
 
-    or
+    var a = 0.1 + 0.2;
+    var b = 0.3;
 
-    typeof Number.EPSILON == "undefined"
+    numbersCloseEnoughToEqual( a, b );                  // true
+    numbersCloseEnoughToEqual( 0.0000001, 0.0000002 );  // false
+```
+
+......
+
+有时JS程序需要处理一些比较大的数字，如数据库中的64位ID等常见情况。由于JavaScript的`数字`类型无法精确呈现64位数值，所以必须将它们保存（转换）为`字符串`来处理。
 
 13 ***
 
