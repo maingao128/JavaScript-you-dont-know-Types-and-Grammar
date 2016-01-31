@@ -970,6 +970,8 @@ myFunction();                // Will return the window object
     typeof a === "number";  // true
 ```
 
+......
+
 `NaN != NaN`为`true`
 
 `NaN`有意无意地反映了很多JS程序面临的一个现实问题。它使得我们尽量使用`Number.isNaN(..)`这样的可靠的测试方法，无论是系统内置还是polyfill都是如此。
