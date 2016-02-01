@@ -952,6 +952,8 @@ myFunction();                // Will return the window object
 
 负零转换为字符串结果是“`0`”
 
+......
+
 -0 == 0; 
 
 -0 === 0; 
