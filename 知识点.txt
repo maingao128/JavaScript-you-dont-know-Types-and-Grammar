@@ -974,6 +974,14 @@ myFunction();                // Will return the window object
 
 `NaN != NaN`为`true`
 
+......
+
+很明显"foo"*不是一个数字*，但是它也不是`NaN`。这个bug自JS问世以来就一直存在，至今超过19年了。
+
+从ES6开始，有一个替代工具函数`Number.isNaN(..)`。它是一个简单的polyfill，你可以在ES6之前的浏览器中安全地测试`NaN`值。
+
+......
+
 `NaN`有意无意地反映了很多JS程序面临的一个现实问题。它使得我们尽量使用`Number.isNaN(..)`这样的可靠的测试方法，无论是系统内置还是polyfill都是如此。
 
 如果你用到了`isNaN(..)`，很不幸你的代码会有bug。
