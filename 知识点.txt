@@ -914,6 +914,24 @@ myFunction();                // Will return the window object
     // "[object RegExp]"
 ```
 
+20.1 *****
+
+JavaScript在语法上对值和引用的赋值／传递不做区分，*仅通过值的类型来判断*。
+
+```
+    var a = 2;
+    var b = a; // `b` is always a copy of the value in `a`
+    b++;
+    a; // 2
+    b; // 3
+
+    var c = [1,2,3];
+    var d = c; // `d` is a reference to the shared `[1,2,3]` value
+    d.push( 4 );
+    c; // [1,2,3,4]
+    d; // [1,2,3,4]
+```
+
 20 ****
 
 反之，如果要象引用那样，将标量基本值传递到函数内并进行更改，就需要将该值封装到一个复合值（`对象`，`数组`，或其他）中，通过引用拷贝的方式传递。
