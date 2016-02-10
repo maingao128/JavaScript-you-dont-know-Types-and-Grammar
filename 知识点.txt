@@ -904,6 +904,22 @@ myFunction();                // Will return the window object
     a.toUpperCase(); // "ABC"
 ```
 
+21.1 ****
+
+原生函数可以被当做构造函数来使用。但是它们创建出来的对象可能会和我们预想的有出入：
+
+```
+    var a = new String( "abc" );
+    
+    typeof a;                            // "object" ... not "String"
+    
+    a instanceof String;                 // true
+    
+    Object.prototype.toString.call( a ); // "[object String]"
+```
+
+通过构造函数（如`new String("abc")`）创建的对象是包含基本类型值（如`"abc"`）的封装对象。
+
 21 ***
 
 ```
