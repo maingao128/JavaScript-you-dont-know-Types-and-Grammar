@@ -922,6 +922,10 @@ myFunction();                // Will return the window object
 
 21 ***
 
+###内部属性[[Class]]
+
+`typeof`返回值为`"object"`的对象（如`array`）包含一个内部属性`[[Class]]`（我们可以把它看作是一个内部的分类，而非传统的面向对象意义上的类）。这个属性无法直接访问，一般是通过`Object.prototype.toString(..)`来访问。例如：
+
 ```
     Object.prototype.toString.call( [1,2,3] );
     // "[object Array]"
