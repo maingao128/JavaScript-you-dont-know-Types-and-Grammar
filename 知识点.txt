@@ -800,6 +800,18 @@ ES5规范第9节中定义了一些“抽象操作”（“仅内部使用的操�
     );                  // false
 ```
 
+29.1
+
+创建日期对象必须使用`new Date()`。`Date(..)`构造函数可以带参数，用来指定日期和时间，不带参数的话则使用当前日期和时间。
+
+......
+
+If you call Date() without new, you’ll get back a string representation of the date/time at that moment. The exact form of this representation is not specified in the language spec, though browsers tend to agree on something close to "Fri Jul 18 2014 00:31:02 GMT-0500 (CDT)".
+
+......
+
+构造函数`Error(..)`（和前面的`Array()`类似）带不带`new`关键字都一样。
+
 29 ***
 
 任何字符串值都可以通过prototype delegation（参考本系列的*《this & Object Prototypes》*）来访问这些方法：
