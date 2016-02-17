@@ -744,6 +744,10 @@ Number(false) // +0
 
 我们可以向`JSON.stringify(..)`传递第二个参数，即可选参数（optional argument）*replacer*。它可以是`数组`或者`函数`，通过某种过滤机制来指定哪些属性应该被处理和排除，然后对结果进行序列化，以此来实现对象递归序列化的定制，类似`toJSON()`。
 
+33.1 *****
+
+`JSON.stringify(..)`遇到`undefined`，`function`，和`symbol`会自动忽略，如果在`array`中则返回`null`（从而保证单元位置索引不变），如果是对象属性则会被忽略。
+
 33 ****
 
 JSON字符串化对于包含`toJSON()`方法的对象有一点特别，这时`toJSON()`方法会首先被调用，然后用它的返回值来做序列化。
