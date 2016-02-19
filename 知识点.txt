@@ -750,6 +750,33 @@ Number(false) // +0
 
 例如，`true`转换为`1`，`false`转换为`0`。`undefined`转换为`NaN`，而`null`则为`0`。
 
+34.1 ****
+
+'use strict';
+
+class Cat {
+    constructor() {
+        this.name = "cat's name";
+        this.gendre = "male";
+        this['etc'] = 'etc';
+    }
+
+};
+
+var cat2 = {
+    name: "cat 2's name",
+    gendre: "female",
+    "etc": 'etc'
+}
+
+console.log(JSON.stringify(new Cat()));
+console.log(JSON.stringify(cat2));
+
+output:
+
+{"name":"cat's name","gendre":"male","etc":"etc"}
+{"name":"cat 2's name","gendre":"female","etc":"etc"}
+
 34 ***
 
 我们可以向`JSON.stringify(..)`传递第二个参数，即可选参数（optional argument）*replacer*。它可以是`数组`或者`函数`，通过某种过滤机制来指定哪些属性应该被处理和排除，然后对结果进行序列化，以此来实现对象递归序列化的定制，类似`toJSON()`。
