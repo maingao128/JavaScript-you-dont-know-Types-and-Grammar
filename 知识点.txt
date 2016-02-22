@@ -714,6 +714,34 @@ Number(false) // +0
 
 *&&和||操作符的返回值并不一定是`boolean`类型。它们的返回值是两个操作数其中的一个的值。*
 
+37.2 ****
+
+将`Date`对象转换为时间戳并非只有强制类型转换这一种方法，其它更显式的方法或许还更好一些：
+
+```
+    var timestamp = new Date().getTime();
+    // var timestamp = (new Date()).getTime();
+    // var timestamp = (new Date).getTime();
+```
+
+从ES5开始*最好*使用静态方法`Date.now()`：
+
+```
+    var timestamp = Date.now();
+```
+
+为老版本浏览器polyfill `Date.now()`功能也很简单：
+
+```
+    if (!Date.now) {
+        Date.now = function() {
+            return +new Date();
+        };
+    }
+```
+
+建议不要对`日期`类型使用强制类型转换，而是使用`Date.now()`来获得当前时间戳，使用`new Date(..).getTime()`来获得指定时间的时间戳。
+
 37.1 ***
 
 除了`String(..)`和`Number(..)`外，还有其他方法可以实现`string`和`number`之间的“显式”类型转换：
