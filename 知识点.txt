@@ -690,9 +690,50 @@ Number(false) // +0
 
 `||`这样的用法非常常见，也很有用，但是你需要确保在使用中避免传递`假值`。否则你就需要在条件判断中更加清晰地说明条件，也可以换而实用`? :`三元表达式。
 
-39.1 ***
+39.1 ****
 
+JavaScript中`string`的`indexOf(..)`方法也遵循此惯例，其在字符串中搜索指定的子字符串，如果找到则返回子字符串的位置（从0开始），否则返回`-1`。
 
+`indexOf(..)`不仅用于获取子字符串的位置，还被用来检查字符串中是否包含指定的子字符串，相当于一个`boolean`判断。例如：
+
+```
+    var a = "Hello World";
+    
+    if (a.indexOf( "lo" ) >= 0) {   // true
+        // found it!
+    }
+    if (a.indexOf( "lo" ) != -1) {  // true
+        // found it }
+    if (a.indexOf( "ol" ) < 0) {    // true
+        // not found!
+    }
+    if (a.indexOf( "ol" ) == -1) {  // true
+        // not found!
+    }
+```
+
+`>= 0`和`== -1`这样的写法不是很好，属于“抽象渗漏（leaky abstraction）”，意思是在代码中暴露了底层的实现细节，这里是指用`-1`作为失败返回值，这些细节应该被隐藏。
+
+现在我们终于明白`~`的用处了！`~`和`indexOf()`一起可以将结果“强制类型转换”（实际上只是转换）为真／假值：
+
+```
+    var a = "Hello World";
+    
+    ~a.indexOf( "lo" );         // -4 <-- truthy!
+    
+    if (~a.indexOf( "lo" )) {   // true
+        // found it!
+    }
+    
+    ~a.indexOf( "ol" );         // 0  <-- falsy!
+    !~a.indexOf( "ol" );        // true
+    
+    if (!~a.indexOf( "ol" )) {  // true
+        // not found!
+    }
+```
+
+如果`indexOf(..)`返回值为`-1`，`~`将其转换为`假值0`，其他情况则转换为`真值`。
 
 39 ****
 
