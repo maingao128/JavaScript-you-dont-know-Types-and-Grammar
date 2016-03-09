@@ -552,6 +552,17 @@ ES6中的解构赋值
     Number( a ) < Number( b );  // true -- number comparison!
 ```
 
+49.1 *****
+
+<table>
+    <tr style="border: none;">
+        <td style="border: none; width: 150px;"><img src='images/note.png'></td>
+        <td style="border: none;">该算法仅针对<b>a &lt; b</b>，<b>a > b</b>会被处理为<b>b &lt; a</b>。</td>
+    </tr>
+</table>
+
+比较双方首先调用`ToPrimitive`，如果结果出现非`string`则根据`ToNumber`规则将双方强制类型转换为`number`来进行比较。
+
 49 ****
 
 ```
