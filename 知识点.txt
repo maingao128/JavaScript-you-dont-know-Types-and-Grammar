@@ -1,3 +1,14 @@
+74 ****
+
+```
+    function foo() {
+        a = a + 1;
+    }
+    
+    var a = 1;
+    foo();      // 结果值: `undefined`, 副作用: `a`的值被改变
+```
+
 73 ****
 
 很多人不知道语句都有一个结果值（statement completion value，`undefined`也是一个结果值）。
