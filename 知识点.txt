@@ -469,6 +469,10 @@ ES6中的解构赋值
 
 56 *****
 
+#####标签
+
+如果将上例中的`var a =`去掉会发生什么情况呢？
+
 ```
     // assume there's a `bar()` function defined
     {
