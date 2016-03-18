@@ -1,3 +1,7 @@
+76. *****
+
+遗憾的是JS规范对运算符优先级并没有一个集中的介绍。我们需要从语法规则中间逐一了解。所以我们在这里列出一些常见和有用的优先级规则。完整列表请参见<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">MDN</a>上的“优先级列表”。
+
 75. ****
 
 在使用`,`来连接一系列语句的时候，请务必记住它的优先级最低，其他操作数的优先级都比它高。
@@ -331,7 +335,7 @@ ASI只在换行符（即line break）处起作用，不会在代码行的中间�
     }
 ```
 
-63.1 ****
+63 *****
 
 有一种方法对于开发人员不太常见，但JS代码压缩工具经常使用。即如果第一个操作数为真值，则`&&`运算符“选择”第二个操作数作为返回值，这也叫做“守护运算符（guard operator）”（见`第五章``第140页的“短路（Short Circuited）”`）－－前面的表达式为后面的表达式“把关”：
 
@@ -349,17 +353,31 @@ ASI只在换行符（即line break）处起作用，不会在代码行的中间�
 
 这样的用法对于开发人员不太常见，通常是用`if (a) { foo(); }`。但是JS代码压缩工具用的是`a && foo()`，因为更简洁。以后看到这样的代码我们就能知其所以然了。
 
-63 *****
-
-对于运算符`&&`和`||`来说，如果能够从左边的操作数得出结果，右边的操作数即可被略过。我们称之为“短路（short circuited）”（即执行最短路径）。
-
 ......
 
-if (opts && opts.cool)
+短路很好用，也很常用，如：
 
-......
+```
+    function doSomething(opts) {
+        if (opts && opts.cool) {
+            // .. 
+        }
+    }
+```
 
-if (opts.cache || primeCache())
+`opts && opts.cool`中的`opts`条件判断如同一层安全保护措施，因为如果`opts`未赋值（或者不是一个`object`），表达式`opts.cool`会出错。此时利用`短路`特性，`opts`条件判断未通过，所以`opts.cool`不会执行，也就不会产生错误！
+
+`||`同样如此：
+
+```
+    function doSomething(opts) {
+        if (opts.cache || primeCache()) {
+            // .. 
+        }
+    }
+```
+
+这里我们先判断`opts.cache`，如果它存在则无需调用`primeCache()`，这样可以避免执行不必要的代码。
 
 62 *****
 
