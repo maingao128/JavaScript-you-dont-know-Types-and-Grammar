@@ -1,3 +1,7 @@
+77. ***
+
+关联（associativity）针对的是多个相同优先级的运算符。
+
 76. *****
 
 遗憾的是JS规范对运算符优先级并没有一个集中的介绍。我们需要从语法规则中间逐一了解。所以我们在这里列出一些常见和有用的优先级规则。完整列表请参见<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence">MDN</a>上的“优先级列表”。
