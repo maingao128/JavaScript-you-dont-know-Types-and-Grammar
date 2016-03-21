@@ -1,6 +1,22 @@
-77. ***
+78. ****
+
+组合
+
+```
+    var a = true, b = false, c = true, d = true, e = false;
+
+    a ? b : (c ? d : e); // false, 执行 `a` 和 `b`
+    (a ? b : c) ? d : e; // false, 执行 `a`, `b` 和 `e`
+```
+
+77. ****
 
 关联（associativity）针对的是多个相同优先级的运算符。
+
+- 执行顺序
+- 关联
+- 绑定
+- 组合
 
 76. *****
 
