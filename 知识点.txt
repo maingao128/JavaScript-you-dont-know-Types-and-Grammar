@@ -316,9 +316,9 @@ ES5规范的`严格（strict）`模式定义了更多的前期错误。比如在
     function bar(a,b,a) { "use strict"; }   // Error!
 ```
 
-66 ***
+66 ****
 
-ASI只在换行符（即line break）处起作用，不会在代码行的中间插入分号。
+请注意ASI只在换行符（即line break）处起作用，不会在代码行的中间插入分号。
 
 ......
 
