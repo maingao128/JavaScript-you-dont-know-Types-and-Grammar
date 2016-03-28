@@ -254,8 +254,7 @@
 
 69 ****
 
-在ES6中，如果某个参数被省略或者值为`undefined`，则使用它的缺省值：
-
+在ES6中，如果参数被省略或者值为`undefined`，则使用该参数的缺省值：
 ```
     function foo( a = 42, b = a + 1 ) {
         console.log( a, b );
