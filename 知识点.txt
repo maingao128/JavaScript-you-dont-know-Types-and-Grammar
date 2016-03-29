@@ -1,3 +1,68 @@
+79. *****
+
+`try`中如果包含`return`语句会出现什么情况呢？很显然`return`会产生一个返回值，那么调用该函数并获得这个返回值的代码是在`finally`之前执行还是之后呢？
+
+```
+    function foo() {
+            try {
+                return 42;
+            } 
+            finally {
+                console.log( "Hello" );
+            }
+
+            console.log( "never runs" );
+    }
+
+    console.log( foo() );
+    // Hello
+    // 42
+```
+......
+
+`try`中的`throw`也是如此：
+
+```
+    function foo() {
+        try {
+            throw 42; 
+        }
+        finally {
+            console.log( "Hello" );
+        }
+
+      console.log( "never runs" );
+    }
+
+    console.log( foo() );
+    // Hello
+    // Uncaught Exception: 42
+```
+
+如果`finally`中抛出异常（无论是人为还是无意），函数就会在此处终结。如果`try`中已经有`return`设置了一个返回值，则该值会被丢弃：
+
+```
+    function foo() {
+        try {
+            return 42;
+        } 
+        finally {
+            throw "Oops!";
+        }
+
+        console.log( "never runs" );
+    }
+    
+    console.log( foo() );
+    // Uncaught Exception: Oops!
+```
+
+`continue`和`break`也是如此：
+
+......
+
+`finally`中的`return`会覆盖`try`和`catch`中的`return`的返回值：
+
 78. ****
 
 组合
