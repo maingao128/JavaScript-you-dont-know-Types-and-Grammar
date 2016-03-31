@@ -1823,7 +1823,7 @@ JavaScript中变量是没有类型的，只有值才有。变量随时可以持�
 
 上面`typeof`的返回值容易让我们得出这样一个结论，就是`函数`（function）也是JavaScript的一个内置类型。然而如果你查阅规范就会知道，它实际上是`object`的一个“子类型”（subtype）。具体来说，函数被称为“可调用对象”（callable object），即该对象内部有一个｀\[\[Call\]\]｀属性使得它能够被执行。
 
-2 ****
+2 *****
 
 typeof null === "object"; // true
 
@@ -1834,6 +1834,8 @@ typeof null === "object"; // true
 
     (!a && typeof a === "object"); // true
 ```
+
+`null`是基本类型中唯一的一个“假值”（falsy或者false-like，见`第四章`）类型，`typeof`对其仍旧返回`"object"`。
 
 1 ***
 
