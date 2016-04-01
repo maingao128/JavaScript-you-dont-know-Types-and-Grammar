@@ -1766,7 +1766,34 @@ ES6中新加入了一个工具方法`Object.is(..)`来判断两个值是否绝�
         atob = function() { /*..*/ };
     }
 
-6 ****
+6.2 *****
+
+还有一些人喜欢使用“依赖注入”（dependency injection）设计模式，就是将依赖通过参数显式地传递到函数中，如：
+
+    function doSomethingCool(FeatureXYZ) {
+        var helper = FeatureXYZ ||
+            function() { /*.. default feature ..*/ };
+        var val = helper();
+        // ..
+    }
+
+6.1 *****
+
+另外有一种方法不用通过`typeof`的安全防范机制，就是检查全局变量是否是全局对象的属性，在浏览器中全局对象是`window`。所以前面的例子也可以这样来实现：
+
+```
+    if (window.DEBUG) {
+        // ..
+    }
+    
+    if (!window.atob) {
+        // ..
+    }
+```
+
+与未声明变量不同，访问不存在的对象属性不会产生`ReferenceError`错误。
+
+6 *****
 
 
 ```
