@@ -1659,6 +1659,28 @@ ES6中新加入了一个工具方法`Object.is(..)`来判断两个值是否绝�
 
 `42.toFixed(3)`是非法语法，因为`.`被视为常量`42.`的一部分（如前所述），因此没有`.`访问运算符来调用`toFixed`方法。
 
+11.1 ****
+
+```
+    function foo() {
+        var arr = Array.prototype.slice.call( arguments );
+        arr.push( "bam" );
+        console.log( arr );
+    }
+
+    foo( "bar", "baz" ); // ["bar","baz","bam"]
+```
+
+如上所示，`slice()`返回参数列表（在本例中是一个类`array`）的一个数组复本。
+
+ES6中的内置工具函数`Array.from(..)`也实现同样的功能：
+
+```
+    ...
+    var arr = Array.from( arguments );
+    ...
+```
+
 11 ****
 
 此外，很多`数组`函数在处理`字符串`时非常有用，`字符串`中没有这些函数，但我们可以“借用”`数组`的这些非变更方法（nonmutation）来处理`字符串`：
