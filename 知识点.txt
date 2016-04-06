@@ -1470,7 +1470,7 @@ myFunction();                // Will return the window object
 
 20.1 *****
 
-JavaScript在语法上对值和引用的赋值／传递不做区分，*仅通过值的类型来判断*。
+JavaScript对值和引用的赋值／传递在语法上没有区别，*完全根据值的类型来决定*。
 
 ```
     var a = 2;
