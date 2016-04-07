@@ -1350,9 +1350,9 @@ myFunction();                // Will return the window object
 
 更要命的是，`数组`并没有预设大小这个概念。这样创建出来的只是一个空数组（empty array），只不过其`length`属性被设置成了指定的值。
 
-23 ***
+23 *****
 
-通常我们不需要直接使用封装。最好是让JS引擎自己决定什么时候使用封装。换句话说就是应该优先考虑使用`"abc"`和`42`这样的基本类型值，而非`new String("abc")`和`new Number(42)`。
+我们一般不需要直接使用封装对象。最好的办法是让JS引擎自己决定什么时候应该使用封装对象。换句话说就是我们应该优先考虑使用`"abc"`和`42`这样的基本类型值，而非`new String("abc")`和`new Number(42)`。
 
 ```
     var a = new Boolean( false );
