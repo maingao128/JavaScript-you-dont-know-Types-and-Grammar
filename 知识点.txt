@@ -1,3 +1,36 @@
+80. *****
+
+例如，将`字符串`值封装（boxing）为字符串对象之后，就能访问`String.prototype`中定义的方法。
+
+......
+
+`String#indexOf(..)`
+    在字符串中找到指定子字符串的位置
+
+`String#charAt(..)`
+    获得字符串指定位置上的字符
+
+`String#substr(..)`，`String#substring(..)`，和` String#slice(..)`
+    获得字符串的指定部分
+
+`String#toUpperCase()`和`String#toLowerCase()`
+    将字符串转换为大写和小写
+
+`String#trim()`
+    去掉字符串前后的空格，返回一个新的字符串
+
+这些方法并不改变原字符串的值，而是返回一个新字符串。
+
+所有字符串都可以通过原型代理（prototype delegation，参考本系列的*《this & Object Prototypes》*一书）来访问这些方法：
+
+```
+    var a = " abc ";
+    
+    a.indexOf( "c" ); // 3
+    a.toUpperCase();  // " ABC "
+    a.trim();         // "abc"
+```
+
 79. *****
 
 `try`中如果包含`return`语句会出现什么情况呢？很显然`return`会产生一个返回值，那么调用该函数并获得这个返回值的代码是在`finally`之前执行还是之后呢？
