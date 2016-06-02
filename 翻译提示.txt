@@ -26,3 +26,10 @@ Grammar is a set of rules that set forth the correct standard of usage in a lang
 Syntax is the study of sentences and their structure, and the constructions within sentences. Syntax tells us what goes where in a sentence.
 
 Shims/Polyfills
+
+###附录A
+
+1. A.1节中的escape和unescape是否应翻译出来？
+2. A.2节项目符号中的第四项翻译是否有误？Having methods that cannot be this-overridden to other objects 
+3. A.4节中有段话漏译了（即原书第168页第三段），请补译一下。
+4. A.6节中（即原书第175页）的那首小诗能不能尽量翻译一下？
